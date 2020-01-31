@@ -19,6 +19,9 @@
         "function": "nextApp"
       }
     ],
-    "predeploy": "yarn build-public"
+    "predeploy": [
+      "yarn build-public",
+      "yarn copy-static"
+    ]
   }
 }

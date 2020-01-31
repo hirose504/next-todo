@@ -9,10 +9,12 @@
   },
   "scripts": {
     "dev": "next src/app",
-    "preserve": "yarn build-public && yarn build-functions && yarn build-app && yarn copy-deps && yarn install-deps",
+    "preserve": "yarn build && yarn copy-deps && yarn copy-static && yarn install-deps",
     "serve": "cross-env NODE_ENV=production firebase serve",
     "deploy": "NODE_ENV=production firebase deploy --only hosting,functions:nextApp",
     "clean": "rimraf \"dist/functions\" && rimraf \"dist/public\"",
+    "prebuild": "rimraf \"dist/functions/next\" && rimraf \"dist/public/_next/static\"",
+    "build": "yarn build-public && yarn build-functions && yarn build-app",
     "build-app": "next build \"src/app\"",
     "build-public": "cpx \"src/public/**/*.*\" \"dist/public\" -C",
     "build-functions": "tsc --project src/functions",
@@ -20,6 +22,7 @@
     "typecheck-app": "tsc --project src/app",
     "lint-functions": "eslint --ext .ts src/functions",
     "copy-deps": "cpx \"*{package.json,package-lock.json,yarn.lock}\" \"dist/functions\" -C",
+    "copy-static": "cpx \"dist/functions/next/static/**/*.*\" \"dist/public/_next/static\" -C",
     "install-deps": "cd \"dist/functions\" && yarn --frozen-lockfile"
   },
   "dependencies": {
