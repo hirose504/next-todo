@@ -1,6 +1,7 @@
+import React, { ReactElement } from 'react'
 import Link from 'next/link'
 
-export default ({ pathname }: { pathname?: any }) => (
+export default ({ pathname }: { pathname?: string }): ReactElement => (
   <header>
     <Link href="/">
       <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
