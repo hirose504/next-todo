@@ -16,9 +16,9 @@
     "build-app": "next build \"src/app\"",
     "build-public": "cpx \"src/public/**/*.*\" \"dist/public\" -C",
     "build-functions": "tsc --project src/functions",
-    "lint-app": "tslint --project src/app",
+    "lint-app": "eslint --ext .ts,.tsx src/app",
     "typecheck-app": "tsc --project src/app",
-    "lint-functions": "tslint --project src/functions",
+    "lint-functions": "eslint --ext .ts src/functions",
     "copy-deps": "cpx \"*{package.json,package-lock.json,yarn.lock}\" \"dist/functions\" -C",
     "install-deps": "cd \"dist/functions\" && npm i"
   },
