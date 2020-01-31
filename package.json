@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "next src/app",
-    "preserve": "npm run build-public && npm run build-functions && npm run build-app && npm run copy-deps && npm run install-deps",
+    "preserve": "yarn build-public && yarn build-functions && yarn build-app && yarn copy-deps && yarn install-deps",
     "serve": "cross-env NODE_ENV=production firebase serve",
     "deploy": "NODE_ENV=production firebase deploy --only hosting,functions:nextApp",
     "clean": "rimraf \"dist/functions\" && rimraf \"dist/public\"",
@@ -20,7 +20,7 @@
     "typecheck-app": "tsc --project src/app",
     "lint-functions": "eslint --ext .ts src/functions",
     "copy-deps": "cpx \"*{package.json,package-lock.json,yarn.lock}\" \"dist/functions\" -C",
-    "install-deps": "cd \"dist/functions\" && npm i"
+    "install-deps": "cd \"dist/functions\" && yarn --frozen-lockfile"
   },
   "dependencies": {
     "firebase-admin": "^8.9.0",
