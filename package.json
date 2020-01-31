@@ -11,7 +11,7 @@
     "dev": "next src/app",
     "preserve": "npm run build-public && npm run build-functions && npm run build-app && npm run copy-deps && npm run install-deps",
     "serve": "cross-env NODE_ENV=production firebase serve",
-    "deploy": "NODE_ENV=production firebase deploy",
+    "deploy": "NODE_ENV=production firebase deploy --only hosting,functions:nextApp",
     "clean": "rimraf \"dist/functions\" && rimraf \"dist/public\"",
     "build-app": "next build \"src/app\"",
     "build-public": "cpx \"src/public/**/*.*\" \"dist/public\" -C",
